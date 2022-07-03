@@ -1,6 +1,6 @@
 # Cash-Flow-analysis-and-forecasting is an Excel-based scalable and flexible BI model template. To use this model please copy the folder "Cash_BI" to your disk C root directory. Feel free to open Cash_BI.xlsm and explore analytical data on different Excel sheets.
 
-All numbers are test data, are not trade secret and are therefore not subject to any view restriction. This model uses three sources of information:
+All numbers are test data, are not a trade secret and are therefore not subject to any view restriction. This model uses three sources of information:
 - Transactional data (tblMain.xlsm):  aggregated data from an ERP-system (for example, Excel-format extract from SAP ERP)
 - Liquidity forecast (tblExtra.xlsm): data collected in Excel from Funds Centers (based on SAP ERP Funds Reservation documents)
 - Planning data (tblPlan.xlsm):       data calculated from Cash Flow budget statement (Cash_From_Budget.xlsx)
