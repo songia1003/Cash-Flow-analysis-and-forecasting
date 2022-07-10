@@ -1,0 +1,41 @@
+@echo off
+SetLocal EnableDelayedExpansion
+
+rem =============================
+rem ====== admin variables ======
+rem =============================
+
+set DirName=Rep
+set SourceDir=C:\Cash_BI
+set BackupDir=C:\Cash_BI_bcp
+set NumFolders=10
+
+rem =============================
+rem == create backup directory == 
+rem ==== DD.MM.YYYY_hhmmmss =====
+rem =============================
+
+set h=%time:~0,2%
+set h=%h: =0%
+set FullBackupDir=%BackupDir%%date%_%h%%time:~3,2%%time:~6,2%\
+md %FullBackupDir%
+
+rem =============================
+rem ====== copy directory =======
+rem =============================
+
+xcopy %SourceDir% %FullBackupDir%%DirName%\ /E /F /H /R /K /Y /D 2>nul >nul
+
+rem =============================
+rem ==== remove old folders =====
+rem =============================
+
+for /f "tokens=* delims=" %%D in ('dir BackupDir /ad /b /o-d') do (
+	if not %%D=="" (
+		if not !NumFolders!==0 (
+			set /a NumFolders-=1
+		) else (
+			rd /s /q %BackupDir%%%D 2>nul >nul
+		)
+	)
+)
